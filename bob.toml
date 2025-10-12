@@ -1,0 +1,23 @@
+[[config]]
+project_name = "Necto"
+bot_configs = ["necto/bot.toml"]
+
+[config.builder_config]
+builder_type = "pyinstaller"
+entry_file = "necto.spec"
+
+[[config]]
+project_name = "Nexto"
+bot_configs = ["nexto/bot.toml"]
+
+[config.builder_config]
+builder_type = "pyinstaller"
+entry_file = "nexto.spec"
+
+[[config]]
+project_name = "NextoToxic"
+bot_configs = ["nexto/toxic.bot.toml"]
+
+[config.builder_config]
+builder_type = "pyinstaller"
+entry_file = "nexto-toxic.spec"
