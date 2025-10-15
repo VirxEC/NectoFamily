@@ -1,15 +1,21 @@
+try:
+    import torch
+except ImportError:
+    import sys
+
+    sys.path.insert(0, "../../torch-archive")
+    import torch
+
 import math
 import random
 
 import numpy as np
-import torch
 from agent import Agent
 from nexto_obs import BOOST_LOCATIONS, NextoObsBuilder
-from rlbot_flatbuffers import GameMode
-from rlgym_compat.v1_game_state import V1GameState as GameState
-
 from rlbot.flat import ControllerState, GamePacket, MatchPhase, Vector3
 from rlbot.managers import Bot
+from rlbot_flatbuffers import GameMode
+from rlgym_compat.v1_game_state import V1GameState as GameState
 
 KICKOFF_CONTROLS = (
     11 * 4 * [ControllerState(throttle=1, boost=True)]

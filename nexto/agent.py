@@ -2,15 +2,7 @@ import math
 import os
 
 import numpy as np
-
-try:
-    import torch
-except ImportError:
-    import sys
-
-    sys.path.insert(0, "../../torch-archive")
-    import torch
-
+import torch
 import torch.nn.functional as F
 from torch.distributions import Categorical
 
