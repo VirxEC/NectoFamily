@@ -20,4 +20,4 @@ bot_configs = ["nexto/toxic.bot.toml"]
 
 [config.builder_config]
 builder_type = "pyinstaller"
-entry_file = "nexto-toxic.spec"
+entry_file = "nexto_toxic.spec"
