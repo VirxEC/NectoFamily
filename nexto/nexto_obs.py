@@ -276,7 +276,7 @@ class NextoObsBuilder(BatchedObsBuilder):
         # BOOSTS
         kv[:, :, sel_boosts, IS_BOOST] = 1
         kv[:, :, sel_boosts, POS] = self._boost_locations
-        kv[:, :, sel_boosts, BOOST] = 0.12 + 0.88 * (self._boost_locations[:, 2] > 72)
+        kv[:, :, sel_boosts, BOOST] = 0.12 + 0.88 * self._boost_types
         kv[:, :, sel_boosts, DEMO] = encoded_states[:, 3 : 3 + 34]  # FIXME boost timer
 
         # PLAYERS
