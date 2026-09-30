@@ -186,6 +186,17 @@ class NextoObsBuilder(BatchedObsBuilder):
             self._boost_types: np.ndarray = np.array(
                 [bp.is_full_boost for bp in field_info.boost_pads]
             )
+            # V1GameState gives the pad states in BOOST_LOCATIONS order, which differs
+            # from the field info order in RLBot v5, so put the pads in that order too
+            order = [
+                np.linalg.norm(self._boost_locations[:, :2] - (x, y), axis=1).argmin()
+                for x, y, _ in BOOST_LOCATIONS
+            ]
+            self._boost_locations = self._boost_locations[order]
+            self._boost_types = self._boost_types[order]
+            # RLBot v5 gives the pad heights as 0.082 and 8, but Nexto was trained
+            # with the heights in BOOST_LOCATIONS (70 and 73), so use those
+            self._boost_locations[:, 2] = np.array(BOOST_LOCATIONS)[:, 2]
 
     def _reset(self, initial_state: GameState):
         self.demo_timers = np.zeros(len(initial_state.players))
